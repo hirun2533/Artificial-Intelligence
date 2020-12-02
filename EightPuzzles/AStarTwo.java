@@ -14,54 +14,46 @@ public class AStarTwo {
 		this.maxQ = Math.max(this.maxQ, FindMaxSize);
 		
 	}
-	/*
-	 *A*two basically, it will search the goal by get the summing up  between the Manhattan distance cost  
-	 *and the correct position all of the tiles until we hit the goal. 
-	 */
-	
 	
 	public void AStartwo(NodeLists topmostNode, String myGoal) {
 
 		boolean checkEqual = true;
 		int numNodePop = 0;
 		char indexcount = '0';
-		HashSet<String> tmpstate = new HashSet<String>(); //this step, it will provide the node that already passed 
+		HashSet<String> tmpstate = new HashSet<String>(); 
 
-		NodeLists curNode = new NodeLists(topmostNode.getCurState());   //declare new nodelist to store current state
+		NodeLists curNode = new NodeLists(topmostNode.getCurState());   
 		curNode.setCost(0);
-		PriorityQueue<NodeLists> myPriorityQ = new PriorityQueue<NodeLists>(NodeLists.comparenode);  //declare new priorrity queue and store comparator
+		PriorityQueue<NodeLists> myPriorityQ = new PriorityQueue<NodeLists>(NodeLists.comparenode);  
 
 		
 		while(checkEqual) {
-			if(!curNode.getCurState().contentEquals(myGoal)) {  							//once it doesn't have the goalstate yet then add it
-				tmpstate.add(curNode.getCurState()); 										//add the current state to the set
-				FindMaxSizeQ(myPriorityQ.size()); 											//keep track of the size of the queue
-				ArrayList<String> mySuccessor = new ArrayList<String>(); 					//create array list for successor
-				mySuccessor = myExecuteSuccessor.MySearch(curNode.getCurState()); 			//to generate the current state of the puzzle
-				Myloop:	for(int i = 0; i < mySuccessor.size(); i++) { 						//my iterator loop arraylist	
-					String tempNode = mySuccessor.get(i); 									//loop through the index
+			if(!curNode.getCurState().contentEquals(myGoal)) {  							
+				tmpstate.add(curNode.getCurState()); 										
+				FindMaxSizeQ(myPriorityQ.size()); 											
+				ArrayList<String> mySuccessor = new ArrayList<String>(); 					
+				mySuccessor = myExecuteSuccessor.MySearch(curNode.getCurState()); 			
+				Myloop:	for(int i = 0; i < mySuccessor.size(); i++) { 							
+					String tempNode = mySuccessor.get(i); 									
 
-					if(!tmpstate.contains(tempNode)) { 										//if tempState doesn't have a set then do, otherwise, get out of here
-					tmpstate.add(tempNode); 												//add state from successors
+					if(!tmpstate.contains(tempNode)) { 										
+					tmpstate.add(tempNode); 												
 
-					NodeLists child = new NodeLists(tempNode); 								//myChild nodelists
-					curNode.addState(child); 												//add myChild to current node
-					child.setCurNode(curNode);												//update current node
+					NodeLists child = new NodeLists(tempNode); 								
+					curNode.addState(child); 												
+					child.setCurNode(curNode);												
 					
 					
-					String string = child.getCurState(); 									//get the current stag
+					String string = child.getCurState(); 									
 
 					int myResApprox = 0;
 					int s = 0; 
 					
-//					myRow = column * 3 + row;
-//					row = index % tmpRowCount
-//					col = index / tmpRowCount
 				
 					while(s < string.length()) {
 						int calmyGoal = myGoal.indexOf(string.codePointAt(s));
 
-						int calManhattan = Math.abs(s%tmpRowCount - calmyGoal%tmpRowCount)   //the calculation of Manhattan Distance with absolute of row and column
+						int calManhattan = Math.abs(s%tmpRowCount - calmyGoal%tmpRowCount)   
 								+ Math.abs(s/tmpRowCount - calmyGoal/tmpRowCount);
 						myResApprox += calManhattan;
 
@@ -69,26 +61,26 @@ public class AStarTwo {
 					}
 				
 						
-					int cost = curNode.getTotalCost();										//summing up the total cost							
+					int cost = curNode.getTotalCost();																
 					String countchar = child.getCurNode().getCurState();
-					char convertCha = child.getCurState().charAt(countchar.indexOf(indexcount));  //first index of current state
+					char convertCha = child.getCurState().charAt(countchar.indexOf(indexcount));  
 
-					int approxCost = Integer.parseInt(String.valueOf(convertCha));				//convert string to integer to take the value
+					int approxCost = Integer.parseInt(String.valueOf(convertCha));				
 					
-					//total between cuurent state and approximately value of the Manhattan distance
-					int total = cost + approxCost;												//summing up the total cost
-					child.setTotalaprox(total, myResApprox);									//update the total cost 
-					myPriorityQ.add(child);														//then add myChild to the queue	
+					
+					int total = cost + approxCost;												
+					child.setTotalaprox(total, myResApprox);									
+					myPriorityQ.add(child);														
 					}
 				}
 				try {
-					curNode = myPriorityQ.poll();												//pull the first element of the queue and make the curNode take it for re-check 
-																								//weather the goal state or not, which will equal to current node.
+					curNode = myPriorityQ.poll();												
+																								
 					
 				}catch (Exception err) {
 					err.printStackTrace();
 				}
-				numNodePop = numNodePop + 1;													//this is the total of the node pop of the queue
+				numNodePop = numNodePop + 1;												
 			}
 
 			else {
@@ -97,9 +89,9 @@ public class AStarTwo {
 
 		}
 
-		//execute these values into the main func.
-		myPuzzleMain.myMainExecute(curNode, topmostNode);										//send for summary
-		myPuzzleMain.FindMaxSizeQ(maxQ, numNodePop);											//send to reveal the size of queue and number node pop.
+	
+		myPuzzleMain.myMainExecute(curNode, topmostNode);										
+		myPuzzleMain.FindMaxSizeQ(maxQ, numNodePop);											
 	}	
 	
 }

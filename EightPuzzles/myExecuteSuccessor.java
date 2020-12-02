@@ -7,11 +7,7 @@ public class myExecuteSuccessor {
 	
 	
 	public NodeLists topmostNode;
-	
-/*
- * my successor class will generate the index of the tiles of the puzzle which are index zero until index 8
- * it will swap the tiles index with the possible tiles that surrounding of the particular index
- */
+
 	 public static ArrayList<String> mySuccessorPuzzle(String myTiles) {
 
 		 
@@ -30,17 +26,17 @@ public class myExecuteSuccessor {
 		 
 			int tmpTiles = Integer.parseInt(String.valueOf(myTiles.indexOf('0')));
 			char tmp = 't';
-			//it will swap index 0 with the possible surrounding tiles which are index 1 and index 3
+			
 			if (tmpTiles == 0){
 
 	            	String begin = myTiles.replace(tile0, tmp);
 	            	String tmp0 = myTiles.replace(tile0, tmp).
 	            			replace(tile1, tile0).
-	            			replace(tmp, tile1);// swap possible index one 
+	            			replace(tmp, tile1);
 	            	
 	            	
 	            	String tmp3 = begin.replace(tile3, tile0).
-	            			replace(tmp, tile3);// swap possible index three
+	            			replace(tmp, tile3);
 	            			
 
 	            	mySwapPuzzle.add(tmp0);
@@ -48,17 +44,17 @@ public class myExecuteSuccessor {
 
 	                
 	            }
-		//it will swap index 1 with the possible surrounding tiles which are index 0 and index 4 and index 2
+		
 
 	          else if(tmpTiles == 1){
 	            	String begin = myTiles.replace(tile1, tmp);
 	            	String tmp0 = myTiles.replace(tile1, tmp).
 	            			replace(tile0, tile1).
-	            			replace(tmp, tile0);// swap possible index zero
+	            			replace(tmp, tile0);
 	            	String tmp3 = begin.replace(tile2, tile1).
-	            			replace(tmp, tile2);// swap possible index two
+	            			replace(tmp, tile2);
 	            	String tmp5 = begin.replace(tile4, tile1).
-	            	replace(tmp, tile4);// swap possible index four
+	            	replace(tmp, tile4);
 	            	
 	            	mySwapPuzzle.add(tmp0);
 	            	mySwapPuzzle.add(tmp3);
@@ -66,34 +62,34 @@ public class myExecuteSuccessor {
 	            	
 	                
 	            }
-			//it will swap index 2 with the possible surrounding tiles which are index 1 and index 5
+			
 	
 	          else if(tmpTiles == 2) {
 
 	            	String begin = myTiles.replace(tile2, tmp);
 	            	String tmp0 = myTiles.replace(tile2, tmp).
 	            	replace(tile1, tile2).
-	            	replace(tmp, tile1);// swap possible index one
+	            	replace(tmp, tile1);
 	            	String tmp3 = begin.replace(tile5, tile2).
-	            	replace(tmp, tile5);// swap possible index five
+	            	replace(tmp, tile5);
 
 	            	mySwapPuzzle.add(tmp0);
 	            	mySwapPuzzle.add(tmp3);
 	            	
 	    	      
 	            }
-			//it will swap index 3 with the possible surrounding tiles which are index 0 and index 4 and index 6
+		
 
 	          else if(tmpTiles == 3) {
 	            	
 	      	        String begin = myTiles.replace(tile3, tmp);
 	            	String tmp0 = myTiles.replace(tile3, tmp)
 	            	.replace(tile0, tile3)
-	            	.replace(tmp, tile0); // swap possible index zero
+	            	.replace(tmp, tile0); 
 	            	String tmp3 = begin.replace(tile4, tile3)
-	            	.replace(tmp, tile4);// swap possible index four
+	            	.replace(tmp, tile4);
 	            	String tmp5 = begin.replace(tile6, tile3)
-	            	.replace(tmp, tile6); // swap possible index six
+	            	.replace(tmp, tile6); 
 	            	
 	            	mySwapPuzzle.add(tmp0);
 	            	mySwapPuzzle.add(tmp3);
@@ -101,21 +97,21 @@ public class myExecuteSuccessor {
 	            	
 	            }
 			
-		//it will swap index 4 with the possible surrounding tiles which are index 1 and index 3 and index 5 and index 6
+	
 
 	          else if(tmpTiles == 4){
 
 	            	String begin = myTiles.replace(tile4, tmp);
 	            	String tmp0 = myTiles.replace(tile4, tmp)
 	            	.replace(tile1, tile4)
-	            	.replace(tmp, tile1);// swap possible index one
+	            	.replace(tmp, tile1);
 	            	String tmp3 = begin.replace(tile3, tile4)
-	            	.replace(tmp, tile3);// swap possible index three
+	            	.replace(tmp, tile3);
 	            	String tmp5 = begin.replace(tile5, tile4)
-	            	.replace(tmp, tile5);// swap possible index five
+	            	.replace(tmp, tile5);
 	            		
 	            	String tmp7 = begin.replace(tile7, tile4)
-	            	.replace(tmp, tile7);// swap possible index seven
+	            	.replace(tmp, tile7);
 	            	
 	            	mySwapPuzzle.add(tmp0);
 	            	mySwapPuzzle.add(tmp3);
@@ -123,18 +119,18 @@ public class myExecuteSuccessor {
 	            	mySwapPuzzle.add(tmp7);
 	            	
 	            }
-	//it will swap index 5 with the possible surrounding tiles which are index 2 and index 4 and index 8
+
 
 	          else if(tmpTiles == 5) {
 	
 	            	String begin = myTiles.replace(tile5, tmp);
 	            	String tmp0 = myTiles.replace(tile5, tmp)
 	            	.replace(tile2, tile5)
-	            	.replace(tmp, tile2);// swap possible index two
+	            	.replace(tmp, tile2);
 	            	String tmp3 = begin.replace(tile4, tile5)
-	            	.replace(tmp, tile4);// swap possible index four
+	            	.replace(tmp, tile4);
 	            	String tmp5 = begin.replace(tile8, tile5)
-	            	.replace(tmp, tile8);// swap possible index eight
+	            	.replace(tmp, tile8);
 	            	
 	            	mySwapPuzzle.add(tmp0);
 	            	mySwapPuzzle.add(tmp3);
@@ -142,56 +138,56 @@ public class myExecuteSuccessor {
 	            	
 	            	
 	            }
-	//it will swap index 6 with the possible surrounding tiles which are index 3 and index 7
+	
 
 	          else if(tmpTiles == 6) {
 	
 	            	String begin = myTiles.replace(tile6, tmp);
 	            	String tmp0 = myTiles.replace(tile6, tmp)
 	            	.replace(myTiles.charAt(3), tile6)
-	            	.replace(tmp, tile3);// swap possible index three
+	            	.replace(tmp, tile3);
 
 	            	String tmp3 = begin.replace(tile7, tile6)
-	            	.replace(tmp, tile7);// swap possible index seven
+	            	.replace(tmp, tile7);
 
 	            	mySwapPuzzle.add(tmp0);
 	            	mySwapPuzzle.add(tmp3);
 	                
 
 	            }
-	//it will swap index 7 with the possible surrounding tiles which are index 4 and index 6 and index 8		
+		
 	          else if(tmpTiles == 7) {
 
 	            	String begin = myTiles.replace(tile7, tmp);
 	            	
 	            	String tmp0 = myTiles.replace(tile7, tmp)
 	            	.replace(tile4, tile7)
-	            	.replace(tmp, tile4);// swap possible index four
+	            	.replace(tmp, tile4);
 	            	
 
 	            	String tmp3 = begin.replace(tile6, tile7)
 
-	            	.replace(tmp, myTiles.charAt(6));// swap possible index six
+	            	.replace(tmp, myTiles.charAt(6));
 	            	
 
 	            	String tmp5 = begin.replace(tile8, tile7)
-	            	.replace(tmp, tile8);// swap possible index right
+	            	.replace(tmp, tile8);
 	            	mySwapPuzzle.add(tmp0);
 	            	mySwapPuzzle.add(tmp3);
 	            	mySwapPuzzle.add(tmp5);
 	                
 	            }
-	//it will swap index 8 with the possible surrounding tiles which are index 5 and index 7	
+	
 
 	          else if(tmpTiles == 8) {
 	            	
 	            	String begin = myTiles.replace(tile8, tmp);
 	            	String tmp0 = myTiles.replace(tile8, tmp)
 	            	.replace(tile5, tile8)
-	            	.replace(tmp, myTiles.charAt(5));// swap possible index seven
+	            	.replace(tmp, myTiles.charAt(5));
 
 	            	String tmp3 = begin.replace(tile7, tile8)
-	            	.replace(tmp, tile7);// swap possible index seven
+	            	.replace(tmp, tile7);
 
 	            	mySwapPuzzle.add(tmp0);
 	            	mySwapPuzzle.add(tmp3);
@@ -202,11 +198,7 @@ public class myExecuteSuccessor {
 
 
 	    }
-	 /*
-	  * my arraylist function for return the cuurrent node to the particular algorithm search
-	  * which will take the successor when its execute
-	  */
-
+	
 	 public static ArrayList<String> MySearch(String node) {
 		
 		 NodeLists topmostNode = new NodeLists(node);
